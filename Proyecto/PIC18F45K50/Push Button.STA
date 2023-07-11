@@ -1,0 +1,46 @@
+
+ROM used:   66/32768 (0%)
+            70/32768 (0%) including unused fragments
+
+            0.1 Average locations per line
+            7.3 Average locations per statement
+
+RAM used:   4/2048 (0%) at main() level
+            4/2048 (0%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   45     9 100  Push Button.c
+  972     0   0  D:\Programas\PICC\Devices\18F45K50.h
+----- -----
+ 1017     9 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0      8   6    0     21  0.9  SisInit
+0     54  41    0    119  2.9  MAIN
+ Inline         0    362  2.3  @cinit1
+
+Program metrics:
+    Functions               3
+    Statements              9
+    Comments                193
+    Volume (V)              623
+    Difficulty (D)          6.4
+    Effort to implement (E) 4018
+    Time to implement (T)   4 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    118
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-01FFE     0  8192  
+02000-02006     4  4  
+02008-07FFE    62  24506  
+
+
+

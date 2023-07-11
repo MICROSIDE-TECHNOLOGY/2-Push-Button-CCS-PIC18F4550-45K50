@@ -1,0 +1,106 @@
+CCS PCH C Compiler, Version 5.090, 13314               01-dic.-20 09:50
+
+               Filename:   C:\Users\Martin Hdez\Desktop\18F4550\2 Push button\Push Button.lst
+
+               ROM used:   50 bytes (0%)
+                           Largest free fragment is 24522
+               RAM used:   4 (0%) at main() level
+                           4 (0%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+2000:  GOTO   2010
+.................... /*
+....................    AUTOR: MICROSIDE TECHNOLOGY S.A. DE C.V.
+....................    FECHA: JUNIO 2019
+.................... */
+.................... 
+.................... /*
+.................... ---------------------------------------------------------------------------
+....................  Implementar el control de encendido y apagado de un LED mediante
+....................  un botón pulsador.
+.................... ---------------------------------------------------------------------------
+.................... */
+.................... 
+.................... #include <18F4550.h>                            //Incluye el microcontrolador con el que se va a trabajar 
+.................... //////////// Standard Header file for the PIC18F4550 device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC18F4550
+.................... 
+.................... #list
+.................... 
+.................... #use delay(clock=48Mhz, crystal)                //Tipo de oscilador y frecuencia dependiendo del microcontrolador 
+.................... #build(reset=0x02000,interrupt=0x02008)         //Asignación de los vectores de reset e interrupción
+.................... #org 0x0000,0x1FFF {}                           //Reserva espacio en la memoria para la versión con bootloader
+.................... 
+.................... #define LED PIN_A1                              //Asigna el pin A1 al LED del X-TRAINER
+.................... #define BOTON PIN_A2                            //Asigna el pin A2 al boton BOOT del X-TRAINER
+.................... 
+.................... void SisInit (void)
+.................... 
+....................  {
+....................      set_tris_a (0b11111101);                   //Pin A1 como salida
+*
+2008:  MOVLW  FD
+200A:  MOVWF  F92
+200C:  GOTO   2022 (RETURN)
+....................  }
+.................... 
+.................... void main (void)
+2010:  CLRF   FF8
+2012:  BCF    FD0.7
+2014:  MOVF   FC1,W
+2016:  ANDLW  C0
+2018:  IORLW  0F
+201A:  MOVWF  FC1
+201C:  MOVLW  07
+201E:  MOVWF  FB4
+....................  {
+....................    SisInit ();
+2020:  BRA    2008
+.................... 
+....................    while (1)                                     //Ciclo repetitivo
+....................    
+....................    {
+....................     if (0 == input (BOTON))                      //Lee el estado del boton
+2022:  BSF    F92.2
+2024:  BTFSC  F80.2
+2026:  BRA    202E
+....................       {
+....................        output_high (LED);                        //Si se presiona el boton enciende el LED
+2028:  BCF    F92.1
+202A:  BSF    F89.1
+....................       }
+202C:  BRA    2032
+.................... 
+....................      else
+.................... 
+....................      {
+....................       output_low (LED);                          //De lo contrario el LED se apaga
+202E:  BCF    F92.1
+2030:  BCF    F89.1
+....................      }
+2032:  BRA    2022
+.................... 
+....................    }
+.................... 
+.................... }
+2034:  SLEEP 
+
+Configuration Fuses:
+   Word  1: CC07   PLL12 CPUDIV1 NOUSBDIV HS FCMEN IESO
+   Word  2: 1E26   PUT BROWNOUT VREGEN NOWDT WDT32768
+   Word  3: 8700   CCP2C1 PBADEN LPT1OSC MCLR
+   Word  4: 00A1   STVREN NOLVP ICSP2 NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB
