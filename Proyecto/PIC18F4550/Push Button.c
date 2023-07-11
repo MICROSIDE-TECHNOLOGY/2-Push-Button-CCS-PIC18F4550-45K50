@@ -6,14 +6,14 @@
 /*
 ---------------------------------------------------------------------------
  Implementar el control de encendido y apagado de un LED mediante
- un bot髇 pulsador.
+ un bot贸n pulsador.
 ---------------------------------------------------------------------------
 */
 
 #include <18F4550.h>                            //Incluye el microcontrolador con el que se va a trabajar 
 #use delay(clock=48Mhz, crystal)                //Tipo de oscilador y frecuencia dependiendo del microcontrolador 
-#build(reset=0x02000,interrupt=0x02008)         //Asignaci髇 de los vectores de reset e interrupci髇
-#org 0x0000,0x1FFF {}                           //Reserva espacio en la memoria para la versi髇 con bootloader
+#build(reset=0x02000,interrupt=0x02008)         //Asignaci贸n de los vectores de reset e interrupci贸n
+#org 0x0000,0x1FFF {}                           //Reserva espacio en la memoria para la versi贸n con bootloader
 
 #define LED PIN_A1                              //Asigna el pin A1 al LED del X-TRAINER
 #define BOTON PIN_A2                            //Asigna el pin A2 al boton BOOT del X-TRAINER
