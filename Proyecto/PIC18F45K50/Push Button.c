@@ -1,7 +1,12 @@
-/*
-   AUTOR: MICROSIDE TECHNOLOGY S.A. DE C.V.
-   FECHA: JUNIO 2019
-*/
+/************************************************************************************************
+Company:
+Microside Technology Inc.
+File Name:
+Push Button.c
+Product Revision  :  1
+Device            :  X-TRAINER
+Driver Version    :  1.0
+************************************************************************************************/
 
 /*
 ---------------------------------------------------------------------------
@@ -14,18 +19,14 @@
 #use delay(internal=48MHz)                             //Tipo de oscilador y frecuencia dependiendo del microcontrolador
 #build(reset=0x02000,interrupt=0x02008)                //Asigna los vectores de reset e interrupción para la versión con bootloader
 #org 0x0000,0x1FFF {}                                  //Reserva espacio en memoria para el bootloader
-#define LED PIN_A1                                     //Asigna el pin A1 al LED del X-TRAINER
+#define LED PIN_A4                                     //Asigna el pin A4 al LED del X-TRAINER
+                                                       //en versiones anteriores se recomienda utilizar el pin A1
+
 #define BOTON PIN_A2                                   //Asigna el pin A2 al boton BOOT del X-TRAINER
-
-void SisInit (void)
-
- {
-     set_tris_a (0b11111101);                           //Pin A1 como salida
- }
 
 void main (void)
  {
-   SisInit ();
+   set_tris_a (0b11110111);                             //Pin A4 como salida
 
    while (1)                                            //Ciclo repetitivo
 
