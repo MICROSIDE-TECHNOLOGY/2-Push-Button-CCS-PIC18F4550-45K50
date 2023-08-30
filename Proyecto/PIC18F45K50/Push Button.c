@@ -15,31 +15,24 @@ Driver Version    :  1.0
 ---------------------------------------------------------------------------
 */
 
-#include <18F45K50.h>                                  //Incluye el microcontrolador con el que se va a trabajar
-#use delay(internal=48MHz)                             //Tipo de oscilador y frecuencia dependiendo del microcontrolador
-#build(reset=0x02000,interrupt=0x02008)                //Asigna los vectores de reset e interrupción para la versión con bootloader
-#org 0x0000,0x1FFF {}                                  //Reserva espacio en memoria para el bootloader
-#define LED PIN_A4                                     //Asigna el pin A4 al LED del X-TRAINER
-                                                       //en versiones anteriores se recomienda utilizar el pin A1
+#include <18F45K50.h>                          //Incluye el microcontrolador con el que se va a trabajar
+#use delay( internal = 48MHz )                 // Tipo de oscilador y frecuencia dependiendo del microcontrolador
+#build( reset = 0x02000, interrupt = 0x02008 ) // Asigna los vectores de reset e interrupción para la versión con bootloader
+#org 0x0000, 0x1FFF {}                         // Reserva espacio en memoria para el bootloader
 
-#define BOTON PIN_A2                                   //Asigna el pin A2 al boton BOOT del X-TRAINER
+#define LED PIN_A4                             // Asigna el pin A4 al LED del X-TRAINER en versiones anteriores se recomienda utilizar el pin A1
 
-void main (void)
- {
-   set_tris_a (0b11110111);                             //Pin A4 como salida
+#define BOTON PIN_A2                           // Asigna el pin A2 al boton BOOT del X-TRAINER
 
-   while (1)                                            //Ciclo repetitivo
+void main( void ) {
+    set_tris_a( 0b11101111 );                  // Pin A4 como salida
 
-   {
-    if (0 == input (BOTON))                             //Lee el estado del boton
-      {
-       output_high (LED);                               //Si se presiona el boton enciende el LED
+    while ( 1 ) {                              // Ciclo repetitivo
+
+      if ( 0 == input( BOTON ) ) {             // Lee el estado del boton
+         output_high( LED );                   // Si se presiona el boton enciende el LED
+      } else {
+         output_low( LED );                    // De lo contrario el LED se apaga
       }
-
-     else
-
-     {
-      output_low (LED);                                  //De lo contrario el LED se apaga
-     }
-   }
+    }
 }

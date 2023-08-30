@@ -6,40 +6,39 @@
 F83     PSP_DATA
 FB4.6   C1OUT
 FB4.7   C2OUT
-FBB     CCP_2_LOW
 FBB     CCP_2
+FBB     CCP_2_LOW
 FBC     CCP_2_HIGH
-FBE     CCP_1
 FBE     CCP_1_LOW
+FBE     CCP_1
 FBF     CCP_1_HIGH
 FE1-FE2 @READ_PACKED_MEMORY.P1
 FE1-FE2 @WRITE_PACKED_MEMORY.P2
-FE9-FEA @WRITE_PROGRAM_MEMORY.P1
-FE9-FEA @READ_PACKED_MEMORY.P2
-FE9-FEA @WRITE_PACKED_MEMORY.P3
-FE9-FEA @READ_PROGRAM_MEMORY.P4
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
 FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
 FF6-FF8 @READ_PROGRAM_MEMORY.P2
 
 ROM Allocation:
-002008  SisInit
-002010  MAIN
-002010  @cinit1
-002020  @cinit2
+002008  main
+002008  @cinit1
+002018  @cinit2
 
 Project Directory:
-    C:\Users\Martin Hdez\Desktop\18F4550\2 Push button\
+    C:\Users\victo\OneDrive\Documentos\X-TRAINER-hands-on\CCS\PIC18F\2-Push-Button-CCS-PIC18F4550-45K50\Proyecto\PIC18F4550\
 
 Project Files:
-    Push Button.c                                           [30-nov.-20 13:32  CRC=A2B0E47F]
-    D:\Programas\PICC\Devices\18F4550.h                     [02-oct.-19 09:47  CRC=AFEA7A8E]
+    Push Button.c                                           [30-ago.-23 13:13  CRC=62E65F18]
+    ..\..\..\..\..\..\..\..\..\..\Program Files (x86)\PICCDEMO\Devices\18F4550.h [02-may.-23 08:34  CRC=3BACED27]
 
-Source signature=0285D99B
+Source signature=DA403966
 Program memory checksum=0000
-Hex file CRC=FDE9
+Hex file CRC=539D
 
 Units:
-    C:\Users\Martin Hdez\Desktop\18F4550\2 Push button\Push Button (main)
+    C:\Users\victo\OneDrive\Documentos\X-TRAINER-hands-on\CCS\PIC18F\2-Push-Button-CCS-PIC18F4550-45K50\Proyecto\PIC18F4550\Push Button (main)
 
 Compiler Settings:
     Processor:      PIC18F4550
@@ -48,7 +47,10 @@ Compiler Settings:
     Opt Level:      9
     Short,Int,Long: UNSIGNED: 1,8,16
     Float,Double:   32,32
-    Compile Mode:       CCS5
+    Compile Mode:   CCS5
+
+Compiler operating in Evaluation Mode
+To obtain a fully enabled compiler visit www.ccsinfo.com/products
 
 Output Files:
     XREF file:   Push Button.xsym
